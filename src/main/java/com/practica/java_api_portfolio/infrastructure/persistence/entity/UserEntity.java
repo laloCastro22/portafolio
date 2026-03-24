@@ -16,13 +16,13 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 120)
     private String username;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 255)
     private String email;
 
-    @Column(name = "password_hash", nullable = false)
+    @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
     @Column(nullable = false)
@@ -45,8 +45,9 @@ public class UserEntity {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = Instant.now();
-        this.updatedAt = Instant.now();
+        Instant now = Instant.now();
+        this.createdAt = now;
+        this.updatedAt = now;
     }
     @PreUpdate
     protected void onUpdate() {
@@ -57,7 +58,6 @@ public class UserEntity {
         this.emailVerification = ev;
         if (ev != null) {
             ev.setUser(this);
-
         }
     }
 }
