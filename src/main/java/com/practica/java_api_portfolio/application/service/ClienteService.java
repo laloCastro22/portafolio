@@ -5,20 +5,17 @@ import com.practica.java_api_portfolio.application.port.in.CrearClienteUseCase;
 import com.practica.java_api_portfolio.application.port.in.ObtenerClienteUseCase;
 import com.practica.java_api_portfolio.application.port.out.ClienteRepositoryPort;
 import com.practica.java_api_portfolio.domain.model.Cliente;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ClienteService implements CrearClienteUseCase, ObtenerClienteUseCase {
 
     private final ClienteRepositoryPort repository;
 
-
-
-    public ClienteService(ClienteRepositoryPort repository) {
-        this.repository = repository;
-    }
 
     @Override
     public Cliente crear(CrearClienteCommand command) {
