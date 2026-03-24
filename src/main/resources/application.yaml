@@ -1,4 +1,30 @@
+verification:
+  code:
+    ttl: 10m
+    max-attempts: 5
+    resend-cooldown: 60s
+security:
+  verification:
+    hmac-secret: ${VERIFICATION_CODE_HMAC_SECRET:}
+  encoder:
+    bcrypt-strength: 10
+app:
+  mail:
+    from: ${MAIL_FROM:${SMTP_USERNAME}}
 spring:
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
   datasource:
     url: jdbc:h2:mem:portfolio;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     driverClassName: org.h2.Driver
