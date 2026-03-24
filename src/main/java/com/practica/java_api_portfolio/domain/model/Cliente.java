@@ -1,6 +1,9 @@
 package com.practica.java_api_portfolio.domain.model;
+import lombok.Getter;
+
 import java.util.UUID;
 
+@Getter
 public class Cliente {
     private final UUID id;
     private final String nombre;
@@ -11,10 +14,6 @@ public class Cliente {
         this.nombre = nombre;
         this.email = email;
     }
-
-    public UUID getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getEmail() { return email; }
 
     public Cliente conNombre(String nuevoNombre) {
         return new Cliente(this.id, nuevoNombre, this.email);
