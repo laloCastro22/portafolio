@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table(name = "email_verifications")
+@Table(name = "td_email_verification")
 @Data
 @Entity
 public class EmailVerificationEntity {
@@ -30,11 +30,4 @@ public class EmailVerificationEntity {
     @Column(name = "last_sent_at", nullable = false)
     private Instant lastSentAt;
 
-    @PrePersist
-    protected void onCreate() {
-        this.attempts = 0;
-        this.expiresAt = Instant.now();
-        this.codeHash = "";
-        this.lastSentAt = Instant.now();
-    }
 }
