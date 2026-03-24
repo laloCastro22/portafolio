@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
     private final CrearClienteUseCase crearCliente;
@@ -36,7 +36,7 @@ public class ClienteController {
         return mapper.toResponse(creado);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{value}")
     public ClienteResponse obtener(@PathVariable UUID id) {
         var cliente = obtenerCliente.obtenerPorId(id);
         return mapper.toResponse(cliente);
